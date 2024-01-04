@@ -1,0 +1,6 @@
+framework module Pods_Tartib_sohibi {
+  umbrella header "Pods-Tartib sohibi-umbrella.h"
+
+  export *
+  module * { export * }
+}

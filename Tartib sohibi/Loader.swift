@@ -26,7 +26,7 @@ public class Loader {
         if let view = UIApplication.keyWindow {
             view.addSubview(loadV)
             
-                customView.animation = LottieAnimation.named("pulseRed")
+//                customView.animation = LottieAnimation.named("pulseRed")
             
             customView.animationSpeed = 1.5
             customView.loopMode = .loop
