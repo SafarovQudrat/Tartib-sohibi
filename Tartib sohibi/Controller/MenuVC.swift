@@ -7,6 +7,7 @@
 
 import UIKit
 import PKHUD
+import RealmSwift
 
 struct SettingsDM {
     var image: UIImage!
@@ -119,14 +120,18 @@ extension MenuVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
             let vc = Profile()
-//            vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }else if indexPath.row == 6 {
             let vc = LoginVC()
             cache.set(false, forKey: "isHome")
+            let realm = try! Realm()
+            let allObjects = realm.objects(NamazDM.self)
+            try! realm.write {
+                realm.delete(allObjects)
+            }
+            let myObj = realm.objects(NamazDM.self)
+            print("Qolgan data = ",myObj)
             ChangeRootViewController.change(with: vc)
-            
-            
         }else if indexPath.row == 1 {
             HUD.flash(.progress,delay: 1.0) { [self] finished in
                 uploadData()

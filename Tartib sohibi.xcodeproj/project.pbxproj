@@ -135,7 +135,6 @@
 				5239ACCF2B457EA600615E3E /* pulse.json */,
 				524D18192A03A34500606357 /* Fonts */,
 				524D18122A039C3E00606357 /* Model */,
-				524D18112A039C3400606357 /* View */,
 				524D18102A039C2500606357 /* Controller */,
 				524D18052A039BFC00606357 /* Assets.xcassets */,
 				524D18072A039BFC00606357 /* LaunchScreen.storyboard */,
@@ -159,13 +158,6 @@
 				5272ECC62A1381AA00983D7A /* Profile.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		524D18112A039C3400606357 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		524D18122A039C3E00606357 /* Model */ = {

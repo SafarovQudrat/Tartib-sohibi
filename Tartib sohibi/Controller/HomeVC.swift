@@ -14,9 +14,6 @@ struct DataDM {
     var title: String
     var isSelect: Bool
 }
-
-
-
 class HomeVC: UIViewController {
     
     private lazy var backV: UIView = {
@@ -249,7 +246,7 @@ class HomeVC: UIViewController {
         try? realm = Realm()
         namaz = realm.objects(NamazDM.self).compactMap{$0}
         print("file url = ",realm.configuration.fileURL ?? "")
-        print(realm.objects(NamazDM.self).compactMap{$0})
+        print( "Data = ",realm.objects(NamazDM.self).compactMap{$0})
         
         
         
@@ -551,6 +548,7 @@ extension HomeVC {
             Loader.stop()
             print("TOKEN = ",cache.string(forKey: "TOKEN")!)
             print("ID=",cache.integer(forKey: "ID"))
+            
             if data.isEmpty {
                 addDay(day: cache.string(forKey: "FARZDATE") ?? "", day_id: namaz.count)
                 count = 0
@@ -563,17 +561,14 @@ extension HomeVC {
             self.tableView.reloadData()
         }
     }
-    
     func getMyInfo() {
         API.getMyInfo { data in
             Loader.stop()
-            print("MY_INFO = ",data)
             cache.set(data["birthday"].stringValue, forKey: "DATE")
             cache.set(data["whenStartNamoz"].stringValue, forKey: "STARTDATE")
             cache.set(data["whenFarzNamoz"].stringValue, forKey: "FARZDATE")
         }
     }
-    
     func uploadNamaz() {
         API.uploadNamaz(data: namaz) { data in
             print("fsdsdcsd",data)
